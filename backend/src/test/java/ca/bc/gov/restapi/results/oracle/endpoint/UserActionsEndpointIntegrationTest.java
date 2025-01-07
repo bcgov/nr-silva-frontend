@@ -62,6 +62,8 @@ class UserActionsEndpointIntegrationTest extends AbstractTestContainerIntegratio
   void getOpeningsSubmissionTrends_happyPath_shouldSucceed() throws Exception {
 
     mockMvc.perform(get("/api/users/submission-trends")
+            .param("entryDateStart", "2023-12-01")
+            .param("entryDateEnd", "2024-11-30")
             .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -90,6 +92,8 @@ class UserActionsEndpointIntegrationTest extends AbstractTestContainerIntegratio
 
     mockMvc.perform(get("/api/users/submission-trends")
             .param("statusCode", "APP")
+            .param("entryDateStart", "2023-12-01")
+            .param("entryDateEnd", "2024-11-30")
             .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
